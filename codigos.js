@@ -30,10 +30,10 @@ function apagarcamara () {
         track.stop(); //Detener cada track
      });
 
-     mediaStream = null; // Limpiar refererncia al Stream
+     mediaStream = null; // Limpiar referencia al Stream
     }
 }
-//Funcion paracaptutara la foto y mostrar la captura en canvas
+//Funcion para captutar la foto y mostrar la captura en canvas
 function capturarfoto () {
     //Dibujar el fotograma actual del video en canvas
     canvas.getContext("2d").drawImage(video, 0 , 0, canvas.width, canvas.height);

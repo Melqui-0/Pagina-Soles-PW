@@ -1,6 +1,10 @@
 body{
     background:-o-linear-gradient((rgba(60, 200, 180, .71), rgba(96, 171, 245, .90)))   
 }
+h1{
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
 .container{
     width: fit-content;
     display: flex;
