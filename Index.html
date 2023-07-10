@@ -9,11 +9,16 @@
 <body>
     <h1>Soles Power Systems</h1>
     <!--<input type="image" src="Img/wp2763910.gif" alt="Imagen">-->
-    <input type="submit" value="I">
-    <input type="file" name="Subir img" id="img" title="img">
-    <input type="button" value="s">
-    <input type="button" value="ssa">
-    <input type="button" value="igs">
-    <input type="week" name="fy" id="gc" title="hf">
+    <div class="camara">
+        <canvas id="canvas" width="150" height="150"></canvas>
+        <button id="open-modal" class="btn" type="button">Abrir cámara</button>
+    </div>
+    <dialog id="modal-webcam">
+        <div class="container">
+            <video id="video" width="150" height="150" autoplay></video>
+            <button id="capturebutton" class="btn" type="button">Tomar foto</button>
+        </div>
+    </dialog>
+    <script src="codigos.js"></script>
 </body>
 </html>
