@@ -1,5 +1,6 @@
 body{
-    background:-o-linear-gradient((rgba(60, 200, 180, .71), rgba(96, 171, 245, .90)))   
+    margin: 0;
+    padding: 0; 
 }
 h1{
     font-family: 'Poppins', sans-serif;
@@ -41,19 +42,19 @@ h1{
     background-color: #00000080;
     border: none;
 }
-#material-symbols-outlined{
-    font-variation-settings:
-    'FILL' 110,
-    'wght' 600,
-    'GRAD' 0,
-    'opsz' 48;
-    text-align: center;
+header{
+    background: url(Img/sunset_gradient_5k.jpg);
+    height: 100hv;
+    background-size: cover;
 }
-#login{
+.Login{
     text-align: center;
+    margin-top: 180px;
 }
-#Contenedor{
+.Contenedor{
     max-width: 1580px;
     margin: auto;
-    text-align: center;
+}
+.Logo{
+    margin-top: 0;
 }
