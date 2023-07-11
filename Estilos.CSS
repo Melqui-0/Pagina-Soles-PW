@@ -41,3 +41,19 @@ h1{
     background-color: #00000080;
     border: none;
 }
+#material-symbols-outlined{
+    font-variation-settings:
+    'FILL' 110,
+    'wght' 600,
+    'GRAD' 0,
+    'opsz' 48;
+    text-align: center;
+}
+#login{
+    text-align: center;
+}
+#Contenedor{
+    max-width: 1580px;
+    margin: auto;
+    text-align: center;
+}
