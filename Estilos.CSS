@@ -42,14 +42,9 @@ h1{
     background-color: #00000080;
     border: none;
 }
-header{
-    background: url(Img/sunset_gradient_5k.jpg);
-    height: 100hv;
-    background-size: cover;
-}
 .Login{
     text-align: center;
-    margin-top: 180px;
+    margin-top: 140px;
 }
 .Contenedor{
     max-width: 1580px;
@@ -57,4 +52,9 @@ header{
 }
 .Logo{
     margin-top: 0;
+}
+.log{
+    background: url(Img/sunset_gradient_5k.jpg);
+    height: 100hv;
+    background-size: cover;
 }
