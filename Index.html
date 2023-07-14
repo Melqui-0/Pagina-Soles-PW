@@ -10,13 +10,33 @@
     <title>5's</title>
 </head>
 <body>
-    <h1>Soles Power Systems</h1>
-    <h2>Área auditada: </h2>
-    <input type="week" name="week" id="week" title="week">
-    <input type="date" name="date" id="date" title="date">
-    <input type="email" errormessage="Por favor, especifique una dirección de correo válida." title="hbh">
-    <input type="submit" value="submit">
-    <!--<input type="image" src="Img/wp2763910.gif" alt="Imagen">-->
+    <h1>Auditoria Soles Power Systems</h1>
+    <header>
+        
+        <button type="reset">Cancelar Auditoria</button>
+        <input type="date" name="fecha" id="fecha">
+        <input type="week" name="week" id="week">
+        <input type="text" name="text" id="text">
+        <div class="areas"> 
+            <label for="areascont">Chose a area</label>
+            <select class="areascont" id="areascont">
+                <option value="MES TEST">MES TEST</option>
+                <option value="FINAL BUILD">FINAL BUILD</option>
+                <option value="ESS TEST">ESS TEST</option>
+                <option value="VPD">VPD</option>
+                <option value="NVEC">NVEC</option>
+                <option value="CONSOLIDACIÓN-C&C-PACK">CONSOLIDACIÓN-C&C-PACK</option>
+                <option value="CRIB">CRIB</option>
+                <option value="PPP & CORAL">PPP & CORAL</option>
+                <option value="SUBBASEMBLY">SUBBASEMBLY</option>
+                <option value="RACK MERGE">RACK MERGE</option>
+                <option value="TEAR DOWN">TEAR DOWN</option>
+                <option value="FFBM'S-SG-MES">FFBM'S-SG-MES</option>
+                <option value="Z-MAINFRAME">Z-MAINFRAME</option>
+                <option value="TEST OPERATION">TEST OPERATION</option>
+            </select>
+        </div>
+    </header>
     <div class="camara">
         <canvas id="canvas" width="100" height="80"></canvas>
         <button id="open-modal" class="btn" type="button">Abrir cámara</button>
