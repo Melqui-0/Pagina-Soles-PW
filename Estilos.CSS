@@ -58,3 +58,23 @@ h1{
     height: 100hv;
     background-size: cover;
 }
+#email{
+    border-radius: 20px;
+    width: 12.5rem;
+    height: 1.65rem;
+    text-align: center;
+}
+#password{
+    border-radius: 20px;
+    width: 12.5rem;
+    height: 1.65rem;
+    text-align: center;
+}
+#logi{
+    border-radius: 20px;
+    width: 12.5rem;
+    height: 2.3rem;
+    text-align: center;
+    color: white;
+    background-color: #3388ff;
+}
