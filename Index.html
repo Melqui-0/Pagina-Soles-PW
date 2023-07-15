@@ -1,23 +1,35 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+    <title>5's</title>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="css/format.css">
+    <link rel="stylesheet" href="css/colors.css">
+
     <link rel="stylesheet" href="Estilos.CSS">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,200&display=swap" rel="stylesheet">
-    <title>5's</title>
+
+
 </head>
+
 <body>
     <h1>Auditoria Soles Power Systems</h1>
     <header>
-        
+
         <button type="reset">Cancelar Auditoria</button>
         <input type="date" name="fecha" id="fecha">
         <input type="week" name="week" id="week">
         <input type="text" name="text" id="text">
-        <div class="areas"> 
+        <div class="areas">
             <label for="areascont">Chose a area</label>
             <select class="areascont" id="areascont">
                 <option value="MES TEST">MES TEST</option>
@@ -47,6 +59,102 @@
             <button id="capturebutton" class="btn" type="button">Tomar foto</button>
         </div>
     </dialog>
+
+    <!-- Sub-section temaplate -->
+    <section class="sub-section">
+        <!-- Header -->
+        <header>
+            <div>
+                <i class='bx bx-loader-circle'></i>
+                <i class='bx bxs-check-circle'></i>
+            </div>
+            <div>
+                <h5>Name of section</h5>
+            </div>
+            <div>
+                <button>Finish Section</button>
+            </div>
+        </header>
+        <!-- Description and points -->
+        <div>
+            <div>
+                <span>Description</span>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam animi sint repellendus magni rerum
+                    nam?
+                </p>
+            </div>
+            <div>
+                <span>1</span>
+            </div>
+        </div>
+        <!-- Buttons -->
+        <div>
+            <button>Add Image</button>
+            <button>Add Commnet</button>
+        </div>
+        <!-- Comments section -->
+        <div>
+            <!-- title -->
+            <div><i class='bx bxs-comment-dots'></i><span>Comments</span></div>
+            <!-- Comments -->
+            <ul>
+                <!-- Comment -->
+                <li>
+                    <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim, modi!</span>
+                    <i class='bx bx-edit'></i>
+                </li>
+                <!-- Comment -->
+                <li>
+                    <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim, modi!</span>
+                    <i class='bx bx-edit'></i>
+                </li>
+                <!-- Comment -->
+                <li>
+                    <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim, modi!</span>
+                    <i class='bx bx-edit'></i>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Images section -->
+        <div>
+            <!-- title -->
+            <div><i class='bx bxs-image-alt'></i><span>Images</span></div>
+            <!-- Images -->
+            <div>
+                <!-- Image -->
+                <div>
+                    <img src="./Img/ibm.jpg" alt="photo">
+                </div>
+                <!-- Image -->
+                <div>
+                    <img src="./Img/ibm.jpg" alt="photo">
+                </div>
+                <!-- Image -->
+                <div>
+                    <img src="./Img/ibm.jpg" alt="photo">
+                </div>
+            </div>
+        </div>
+
+        <!-- View image in a modal -->
+        <dialog open="">
+            <section>
+                <header>
+                    <button>
+                        <i class='bx bxs-x-circle'></i>
+                    </button>
+                </header>
+                <div>
+                    <img src="Img/ibm.jpg" alt="">
+                </div>
+            </section>
+        </dialog>
+        
+    </section>
+
     <script src="codigos.js"></script>
 </body>
+
 </html>
