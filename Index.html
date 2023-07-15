@@ -60,101 +60,20 @@
         </div>
     </dialog>
 
-    <!-- Sub-section temaplate -->
-    <section class="sub-section">
-        <!-- Header -->
-        <header>
-            <div>
-                <i class='bx bx-loader-circle'></i>
-                <i class='bx bxs-check-circle'></i>
-            </div>
-            <div>
-                <h5>Name of section</h5>
-            </div>
-            <div>
-                <button>Finish Section</button>
-            </div>
-        </header>
-        <!-- Description and points -->
-        <div>
-            <div>
-                <span>Description</span>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam animi sint repellendus magni rerum
-                    nam?
-                </p>
-            </div>
-            <div>
-                <span>1</span>
-            </div>
-        </div>
-        <!-- Buttons -->
-        <div>
-            <button>Add Image</button>
-            <button>Add Commnet</button>
-        </div>
-        <!-- Comments section -->
-        <div>
-            <!-- title -->
-            <div><i class='bx bxs-comment-dots'></i><span>Comments</span></div>
-            <!-- Comments -->
-            <ul>
-                <!-- Comment -->
-                <li>
-                    <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim, modi!</span>
-                    <i class='bx bx-edit'></i>
-                </li>
-                <!-- Comment -->
-                <li>
-                    <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim, modi!</span>
-                    <i class='bx bx-edit'></i>
-                </li>
-                <!-- Comment -->
-                <li>
-                    <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim, modi!</span>
-                    <i class='bx bx-edit'></i>
-                </li>
-            </ul>
-        </div>
+    <div class="content">
 
-        <!-- Images section -->
-        <div>
-            <!-- title -->
-            <div><i class='bx bxs-image-alt'></i><span>Images</span></div>
-            <!-- Images -->
-            <div>
-                <!-- Image -->
-                <div>
-                    <img src="./Img/ibm.jpg" alt="photo">
-                </div>
-                <!-- Image -->
-                <div>
-                    <img src="./Img/ibm.jpg" alt="photo">
-                </div>
-                <!-- Image -->
-                <div>
-                    <img src="./Img/ibm.jpg" alt="photo">
-                </div>
-            </div>
-        </div>
+    </div>
 
-        <!-- View image in a modal -->
-        <dialog open="">
-            <section>
-                <header>
-                    <button>
-                        <i class='bx bxs-x-circle'></i>
-                    </button>
-                </header>
-                <div>
-                    <img src="Img/ibm.jpg" alt="">
-                </div>
-            </section>
-        </dialog>
-        
-    </section>
 
     <script src="codigos.js"></script>
+    <script src="js/SubSection.js"></script>
+    
+    <script>
+        const content = document.querySelector('.content')
+
+        content.appendChild(new SubSection().init());
+        content.appendChild(new SubSection().init());
+    </script>
 </body>
 
 </html>
