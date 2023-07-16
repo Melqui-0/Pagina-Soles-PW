@@ -69,16 +69,19 @@
     <script src="js/SubSection.js"></script>
     <script src="js/ModalCamara.js"></script>
     <script src="js/ModalViewImage.js"></script>
+    <script src="js/ModalEditComment.js"></script>
 
     <script>
         const content = document.querySelector('.content');
 
         const modalCamara = new ModalCamara();
-        const modalViewImage = new ModalViewImage();        
-        const subSection1 = new SubSection(modalCamara, modalViewImage);
+        const modalViewImage = new ModalViewImage();
+        const modalEditComment = new ModalEditComment();
+        const subSection1 = new SubSection(modalCamara, modalViewImage, modalEditComment);
 
         content.appendChild(modalCamara.init());
         content.appendChild(modalViewImage.init());
+        content.appendChild(modalEditComment.init());
         content.appendChild(subSection1.init());
     </script>
 </body>

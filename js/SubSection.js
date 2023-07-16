@@ -1,7 +1,8 @@
 class SubSection {
-    constructor(camara, viewImageTest) {
+    constructor(camara, viewImageTest, editCommentTest) {
         this.camara = camara;
         this.viewImageTest = viewImageTest;
+        this.editCommentTest = editCommentTest;
 
         this.finished = false;
         this.editComment = false;
@@ -57,39 +58,21 @@ class SubSection {
     handleClickEditCommentButton = (e) => {
         const target = e.target.tagName === "I" ? e.target.parentElement.parentElement.parentElement : e.target.parentElement.parentElement;
         const id = target.id;
-        this.commentSelected = this.comments.filter((comment) => comment.id === id)[0];
-        this.editComment = true;
-        this.render();
-    }
+        const comment = this.comments.filter((comment) => comment.id === id)[0];
 
-    handleClickCloseModalEditButton = (e) => {
-        const modalEdit = this.section.querySelector('.modal-edit');
-        this.editComment = false;
-        modalEdit.close();
-    }
+        this.editCommentTest.openModal(comment, (newComment) => {
+            this.comments = this.comments.map((comment) => {
+                if (comment.id !== newComment.id) return comment;
 
-    handleClickModalEditForm = (e) => {
-        e.preventDefault();
-        const modalEdit = this.section.querySelector('.modal-edit');
-        const textarea = modalEdit.querySelector('.modal-edit__textarea');
-
-        this.comments = this.comments.map((comment) => {
-            if (comment.id !== this.commentSelected.id) return comment;
-
-            comment.comment = textarea.value;
-            return comment;
+                comment.comment = newComment.comment;
+                return comment;
+            });
+            this.render();
         });
-
-        this.editComment = false;
-        this.render();
     }
 
     handleClickImage = (e) => {
-        console.log("open image");
         this.viewImageTest.openModal(e.target);
-        // this.viewImageSelected = e.target;
-        // this.viewImage = true;
-        // this.render();
     }
 
     handleClickDeleteImageButton = (e) => {
@@ -98,12 +81,6 @@ class SubSection {
         this.images = this.images.filter((img) => img.id !== id);
         this.render();
     }
-
-    // handleClickCloseModalViewButton = (e) => {
-    //     const modalView = this.section.querySelector('.modal-view');
-    //     this.viewImage = false;
-    //     modalView.close();
-    // }
 
     addEvents = () => {
         const finishButton = this.section.querySelector('.sub-section__finish-button');
@@ -125,12 +102,6 @@ class SubSection {
             button.addEventListener('click', this.handleClickEditCommentButton);
         });
 
-        const closeModalEditButton = this.section.querySelector('.modal-edit__close-button');
-        closeModalEditButton.addEventListener('click', this.handleClickCloseModalEditButton);
-
-        const modalEditForm = this.section.querySelector('.modal-edit__form');
-        modalEditForm.addEventListener('submit', this.handleClickModalEditForm);
-
         const images = this.section.querySelectorAll('.sub-section__images__image__img');
         images.forEach((img) => {
             img.addEventListener('click', this.handleClickImage);
@@ -140,10 +111,6 @@ class SubSection {
         deleteImageButtons.forEach((btn) => {
             btn.addEventListener('click', this.handleClickDeleteImageButton);
         });
-
-        // const modalViewCloseButton = this.section.querySelector('.modal-view__close-button');
-        // modalViewCloseButton.addEventListener('click', this.handleClickCloseModalViewButton);
-
     }
 
     render = () => {
@@ -233,23 +200,6 @@ class SubSection {
             }
             </div>
         </div>
-
-        <!-- Edit commnet modal -->
-        <dialog ${this.editComment ? "open='true'" : ""} class="modal-edit">
-            <section>
-                <header>
-                    <button class="modal-edit__close-button">
-                        <i class='bx bxs-x-circle'></i>
-                    </button>
-                </header>
-                <form class="modal-edit__form">
-                    <textarea class="modal-edit__textarea">${this.commentSelected ? this.commentSelected.comment : ""}</textarea>
-                    <button type="submit">
-                        Save
-                    </button>
-                </form>
-            </section>
-        </dialog>
         `
         this.addEvents();
     }

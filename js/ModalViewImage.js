@@ -4,7 +4,7 @@ class ModalViewImage {
         this.image = null;
         this.callback = null;
         this.section = document.createElement('section');
-        this.section.classList.add("camara-section");
+        this.section.classList.add("view-image-section");
     }
 
     init = () => {
@@ -13,7 +13,6 @@ class ModalViewImage {
     }
 
     openModal = (image, cb) => {
-        console.log(image);
         this.image = image;
         this.open = true;
         this.render();
