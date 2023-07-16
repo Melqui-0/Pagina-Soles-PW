@@ -59,17 +59,7 @@
         <label for="super">Supervisor:  </label>
         <a></a>
     </header>
-    <div class="camara">
-        <canvas id="canvas" width="100" height="80"></canvas>
-        <button id="open-modal" class="btn" type="button">Abrir cámara</button>
-    </div>
-    <dialog id="modal-webcam">
-        <div class="container">
-            <video id="video" width="500" height="500" autoplay></video>
-            <button id="capturebutton" class="btn" type="button">Tomar foto</button>
-        </div>
-    </dialog>
-    <script src="codigos.js"></script>
+   
     <button id="submit">Enviar auditoria</button>
 
     <main class="content">
@@ -90,27 +80,13 @@
         </article>
     </main>
 
-
-    <!-- <script src="codigos.js"></script> -->
-    <script src="js/SubSection.js"></script>
+    <script src="codigos.js"></script>
     <script src="js/ModalCamara.js"></script>
-    <script src="js/ModalViewImage.js"></script>
     <script src="js/ModalEditComment.js"></script>
+    <script src="js/ModalViewImage.js"></script>
+    <script src="js/SubSection.js"></script>
+    <script type="module" src="js/setup.js"></script>
 
-    <script>
-
-        const modalCamara = new ModalCamara();
-        const modalViewImage = new ModalViewImage();
-        const modalEditComment = new ModalEditComment();
-        const subSection1 = new SubSection(modalCamara, modalViewImage, modalEditComment);
-
-        const content = document.querySelector('.content');
-        const seleccionar = document.querySelector('#article-seleccionar');
-        content.appendChild(modalCamara.init());
-        content.appendChild(modalViewImage.init());
-        content.appendChild(modalEditComment.init());
-        seleccionar.appendChild(subSection1.init());
-    </script>
 </body>
 
 </html>
