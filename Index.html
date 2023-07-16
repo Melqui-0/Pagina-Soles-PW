@@ -1,18 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+    <title>5's</title>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="css/format.css">
+    <link rel="stylesheet" href="css/colors.css">
+
     <link rel="stylesheet" href="Estilos.CSS">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,200&display=swap" rel="stylesheet">
-    <title>5's</title>
+
+
 </head>
+
 <body>
     <h1>Auditoria Soles Power Systems</h1>
     <header>
-        
+
         <button type="reset">Cancelar Auditoria</button>
         <label for="turnos">Turno: </label>
         <label for="1">1</label>
@@ -22,6 +34,11 @@
         <input type="datetime-local" name="tiempo" id="tiempo">
         <input type="week" name="week" id="week"> 
         <label for="areascont">Área:</label>
+        <input type="date" name="fecha" id="fecha">
+        <input type="week" name="week" id="week">
+        <input type="text" name="text" id="text">
+        <div class="areas">
+            <label for="areascont">Chose a area</label>
             <select class="areascont" id="areascont">
                 <option value=" "> </option>
                 <option value="MES TEST">MES TEST</option>
@@ -54,5 +71,46 @@
     </dialog>
     <script src="codigos.js"></script>
     <button id="submit">Enviar auditoria</button>
+
+    <main class="content">
+        <article id="article-seleccionar">
+
+        </article>
+        <article id="article-ordenar">
+
+        </article>
+        <article id="article-limpiar">
+
+        </article>
+        <article id="article-estandarizar">
+
+        </article>
+        <article id="article-sostener">
+
+        </article>
+    </main>
+
+
+    <!-- <script src="codigos.js"></script> -->
+    <script src="js/SubSection.js"></script>
+    <script src="js/ModalCamara.js"></script>
+    <script src="js/ModalViewImage.js"></script>
+    <script src="js/ModalEditComment.js"></script>
+
+    <script>
+
+        const modalCamara = new ModalCamara();
+        const modalViewImage = new ModalViewImage();
+        const modalEditComment = new ModalEditComment();
+        const subSection1 = new SubSection(modalCamara, modalViewImage, modalEditComment);
+
+        const content = document.querySelector('.content');
+        const seleccionar = document.querySelector('#article-seleccionar');
+        content.appendChild(modalCamara.init());
+        content.appendChild(modalViewImage.init());
+        content.appendChild(modalEditComment.init());
+        seleccionar.appendChild(subSection1.init());
+    </script>
 </body>
+
 </html>
