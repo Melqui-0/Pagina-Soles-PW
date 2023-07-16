@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const video = document.getElementById("video");
 const canvas = document.getElementById("canvas");
 const capturebutton = document.getElementById("capturebutton");
@@ -46,18 +47,24 @@ function capturarfoto () {
 //Agregar el evento click al boton de captura
 capturebutton.addEventListener("click", capturarfoto);
 
+=======
+>>>>>>> 5311c367ace2fb090e16f06be7ff699d58160c46
 //Para los supervisores
 let seleccionar = document.querySelector('select');
 let parrafo = document.querySelector('a');
 let turnos = document.querySelector('input[name="turno"]:checked').value;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5311c367ace2fb090e16f06be7ff699d58160c46
 
 seleccionar.addEventListener('change', establecersuper);
 
-function establecersuper(){
+function establecersuper() {
     let eleccion = seleccionar.value;
     let turno = turnos.value;
 
+<<<<<<< HEAD
     if (eleccion === 'MES TEST' && turno === 2) {
     parrafo.textContent = 'Rafael granados';
     }  else {
@@ -72,3 +79,20 @@ function establecersuper(){
 //    var selected = Array.from(radios).find(radio => radio.checked);
 //    alert (selected.value)
 //}
+=======
+    if (eleccion === 'MES TEST') {
+        parrafo.textContent = 'Rafael granados';
+    } else if (turno === 2) {
+        parrafo.textContent = 'Ganaste';
+    }
+    else {
+        parrafo.textContent = ' ';
+    }
+}
+
+document.getElementById('submit').onclick = function () {
+    var radios = document.getElementsByName('turno');
+    var selected = Array.from(radios).find(radio => radio.checked);
+    alert(selected.value)
+}
+>>>>>>> 5311c367ace2fb090e16f06be7ff699d58160c46
