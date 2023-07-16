@@ -1,5 +1,6 @@
 class SubSection {
-    constructor() {
+    constructor(camara) {
+        this.camara = camara;
         this.finished = false;
         this.editComment = false;
         this.commentSelected = null;
@@ -27,6 +28,14 @@ class SubSection {
     handleClickFinishButton = (e) => {
         this.finished = !this.finished;
         this.render();
+    }
+
+    handleClickAddImageButton = (e) => {
+        this.camara.openModal((image) => {
+            const id = this.generateID();
+            this.images.push({id: id, img: image});
+            this.render();
+        });
     }
 
     handleClickAddCommentButton = (e) => {
@@ -88,6 +97,9 @@ class SubSection {
     addEvents = () => {
         const finishButton = this.section.querySelector('.sub-section__finish-button');
         finishButton.addEventListener('click', this.handleClickFinishButton);
+
+        const addImageButton = this.section.querySelector('.sub-section__add-image-button');
+        addImageButton.addEventListener('click', this.handleClickAddImageButton);
 
         const addCommentButton = this.section.querySelector('.sub-section__add-comment-button');
         addCommentButton.addEventListener('click', this.handleClickAddCommentButton);
@@ -156,7 +168,7 @@ class SubSection {
         <!-- Buttons -->
         <div>
             <button class="sub-section__add-comment-button">Add Comment</button>
-            <button>Add Image</button>
+            <button class="sub-section__add-image-button">Add Image</button>
         </div>
         <!-- Comments section -->
         <div>
@@ -192,10 +204,15 @@ class SubSection {
             <div><i class='bx bxs-image-alt'></i><span>Images</span></div>
             <!-- Images -->
             <div class="sub-section__images">
-                <!-- Image -->
-                <div class="sub-section__images__image">
-                    <img src="./Img/ibm.jpg" alt="photo">
-                </div>
+                ${
+                    this.images.map((img) => {
+                        return `
+                        <div class="sub-section__images__image">
+                            <img src=${img.img} alt="photo">
+                        </div>  
+                        `
+                    })
+                }
             </div>
         </div>
 
