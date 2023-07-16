@@ -21,7 +21,6 @@ class ModalCamara {
 
     useCamara = () => {
         const video = this.section.querySelector(".modal-webcam__video");
-        console.log(video);
         navigator.mediaDevices.getUserMedia({ video: true })
             .then((stream) => {
                 this.stream = stream;

@@ -33,7 +33,7 @@ class SubSection {
     handleClickAddImageButton = (e) => {
         this.camara.openModal((image) => {
             const id = this.generateID();
-            this.images.push({id: id, img: image});
+            this.images.push({ id: id, img: image });
             this.render();
         });
     }
@@ -88,6 +88,13 @@ class SubSection {
         this.render();
     }
 
+    handleClickDeleteImageButton = (e) => {
+        const target = e.target.tagName === "I" ? e.target.parentElement.parentElement : e.target.parentElement;
+        const id = target.id;
+        this.images = this.images.filter((img) => img.id !== id);
+        this.render();
+    }
+
     handleClickCloseModalViewButton = (e) => {
         const modalView = this.section.querySelector('.modal-view');
         this.viewImage = false;
@@ -120,9 +127,14 @@ class SubSection {
         const modalEditForm = this.section.querySelector('.modal-edit__form');
         modalEditForm.addEventListener('submit', this.handleClickModalEditForm);
 
-        const images = this.section.querySelectorAll('.sub-section__images__image');
+        const images = this.section.querySelectorAll('.sub-section__images__image__img');
         images.forEach((img) => {
             img.addEventListener('click', this.handleClickImage);
+        });
+
+        const deleteImageButtons = this.section.querySelectorAll('.sub-section__images__delete-image-button');
+        deleteImageButtons.forEach((btn) => {
+            btn.addEventListener('click', this.handleClickDeleteImageButton);
         });
 
         const modalViewCloseButton = this.section.querySelector('.modal-view__close-button');
@@ -204,15 +216,17 @@ class SubSection {
             <div><i class='bx bxs-image-alt'></i><span>Images</span></div>
             <!-- Images -->
             <div class="sub-section__images">
-                ${
-                    this.images.map((img) => {
-                        return `
-                        <div class="sub-section__images__image">
-                            <img src=${img.img} alt="photo">
+                ${this.images.map((img) => {
+                return `
+                        <div class="sub-section__images__image" id=${img.id}>
+                            <button class="sub-section__images__delete-image-button">
+                                <i class='bx bxs-x-circle'></i>
+                            </button>
+                            <img class="sub-section__images__image__img" src=${img.img} alt="photo">
                         </div>  
                         `
-                    })
-                }
+            }).join('')
+            }
             </div>
         </div>
 
