@@ -172,7 +172,7 @@ class SubSection {
                 </p>
             </div>
             <div>
-                <input type="number"  class="sub-section__score" min="0" max="5" value="0">
+                <input type="number"  class="sub-section__score" min="0" max="5" value=${this.score}>
             </div>
         </div>
         <!-- Buttons -->
