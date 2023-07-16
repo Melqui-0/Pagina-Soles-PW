@@ -50,24 +50,22 @@
         </div>
     </header>
 
-    <main>
-        <div class="content">
-            <article id="article-seleccionar">
+    <main class="content">
+        <article id="article-seleccionar">
 
-            </article>
-            <article id="article-ordenar">
+        </article>
+        <article id="article-ordenar">
 
-            </article>
-            <article id="article-limpiar">
+        </article>
+        <article id="article-limpiar">
 
-            </article>
-            <article id="article-estandarizar">
+        </article>
+        <article id="article-estandarizar">
 
-            </article>
-            <article id="article-sostener">
+        </article>
+        <article id="article-sostener">
 
-            </article>
-        </div>
+        </article>
     </main>
 
 
@@ -78,16 +76,17 @@
     <script src="js/ModalEditComment.js"></script>
 
     <script>
-        
+
         const modalCamara = new ModalCamara();
         const modalViewImage = new ModalViewImage();
         const modalEditComment = new ModalEditComment();
         const subSection1 = new SubSection(modalCamara, modalViewImage, modalEditComment);
-        
+
+        const content = document.querySelector('.content');
         const seleccionar = document.querySelector('#article-seleccionar');
-        seleccionar.appendChild(modalCamara.init());
-        seleccionar.appendChild(modalViewImage.init());
-        seleccionar.appendChild(modalEditComment.init());
+        content.appendChild(modalCamara.init());
+        content.appendChild(modalViewImage.init());
+        content.appendChild(modalEditComment.init());
         seleccionar.appendChild(subSection1.init());
     </script>
 </body>
