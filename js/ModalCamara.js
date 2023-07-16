@@ -55,7 +55,6 @@ class ModalCamara {
     handleClickCamaraButton = (e) => {
         this.takePhoto();
         if (this.callback) {
-            console.log("callback");
             this.callback(this.image);
         }
         this.render();

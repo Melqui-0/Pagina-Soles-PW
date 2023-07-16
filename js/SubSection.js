@@ -1,6 +1,8 @@
 class SubSection {
-    constructor(camara) {
+    constructor(camara, viewImageTest) {
         this.camara = camara;
+        this.viewImageTest = viewImageTest;
+
         this.finished = false;
         this.editComment = false;
         this.commentSelected = null;
@@ -83,9 +85,11 @@ class SubSection {
     }
 
     handleClickImage = (e) => {
-        this.viewImageSelected = e.target;
-        this.viewImage = true;
-        this.render();
+        console.log("open image");
+        this.viewImageTest.openModal(e.target);
+        // this.viewImageSelected = e.target;
+        // this.viewImage = true;
+        // this.render();
     }
 
     handleClickDeleteImageButton = (e) => {
@@ -95,11 +99,11 @@ class SubSection {
         this.render();
     }
 
-    handleClickCloseModalViewButton = (e) => {
-        const modalView = this.section.querySelector('.modal-view');
-        this.viewImage = false;
-        modalView.close();
-    }
+    // handleClickCloseModalViewButton = (e) => {
+    //     const modalView = this.section.querySelector('.modal-view');
+    //     this.viewImage = false;
+    //     modalView.close();
+    // }
 
     addEvents = () => {
         const finishButton = this.section.querySelector('.sub-section__finish-button');
@@ -137,8 +141,8 @@ class SubSection {
             btn.addEventListener('click', this.handleClickDeleteImageButton);
         });
 
-        const modalViewCloseButton = this.section.querySelector('.modal-view__close-button');
-        modalViewCloseButton.addEventListener('click', this.handleClickCloseModalViewButton);
+        // const modalViewCloseButton = this.section.querySelector('.modal-view__close-button');
+        // modalViewCloseButton.addEventListener('click', this.handleClickCloseModalViewButton);
 
     }
 
@@ -174,7 +178,7 @@ class SubSection {
                 </p>
             </div>
             <div>
-                <span>1</span>
+                <input type="number" min="0" max="5" value="0">
             </div>
         </div>
         <!-- Buttons -->
@@ -229,20 +233,6 @@ class SubSection {
             }
             </div>
         </div>
-
-        <!-- View image modal -->
-        <dialog ${this.viewImage ? "open='true'" : ""} class="modal-view">
-            <section>
-                <header>
-                    <button class="modal-view__close-button">
-                        <i class='bx bxs-x-circle'></i>
-                    </button>
-                </header>
-                <div>
-                    <img src=${this.viewImageSelected ? this.viewImageSelected.src : ""} alt="" class="modal-view__image">
-                </div>
-            </section>
-        </dialog>
 
         <!-- Edit commnet modal -->
         <dialog ${this.editComment ? "open='true'" : ""} class="modal-edit">
