@@ -49,40 +49,46 @@
             </select>
         </div>
     </header>
-    <div class="camara">
-        <canvas id="canvas" width="100" height="80"></canvas>
-        <button id="open-modal" class="btn" type="button">Abrir cámara</button>
-    </div>
-    <dialog id="modal-webcam">
-        <div class="container">
-            <video id="video" width="500" height="500" autoplay></video>
-            <button id="capturebutton" class="btn" type="button">Tomar foto</button>
+
+    <main>
+        <div class="content">
+            <article id="article-seleccionar">
+
+            </article>
+            <article id="article-ordenar">
+
+            </article>
+            <article id="article-limpiar">
+
+            </article>
+            <article id="article-estandarizar">
+
+            </article>
+            <article id="article-sostener">
+
+            </article>
         </div>
-    </dialog>
-
-    <div class="content">
-        
-    </div>
+    </main>
 
 
-    <script src="codigos.js"></script>
+    <!-- <script src="codigos.js"></script> -->
     <script src="js/SubSection.js"></script>
     <script src="js/ModalCamara.js"></script>
     <script src="js/ModalViewImage.js"></script>
     <script src="js/ModalEditComment.js"></script>
 
     <script>
-        const content = document.querySelector('.content');
-
+        
         const modalCamara = new ModalCamara();
         const modalViewImage = new ModalViewImage();
         const modalEditComment = new ModalEditComment();
         const subSection1 = new SubSection(modalCamara, modalViewImage, modalEditComment);
-
-        content.appendChild(modalCamara.init());
-        content.appendChild(modalViewImage.init());
-        content.appendChild(modalEditComment.init());
-        content.appendChild(subSection1.init());
+        
+        const seleccionar = document.querySelector('#article-seleccionar');
+        seleccionar.appendChild(modalCamara.init());
+        seleccionar.appendChild(modalViewImage.init());
+        seleccionar.appendChild(modalEditComment.init());
+        seleccionar.appendChild(subSection1.init());
     </script>
 </body>
 

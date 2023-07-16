@@ -1,17 +1,14 @@
 class SubSection {
-    constructor(camara, viewImageTest, editCommentTest) {
+    constructor(camara, viewImage, editComment) {
         this.camara = camara;
-        this.viewImageTest = viewImageTest;
-        this.editCommentTest = editCommentTest;
+        this.viewImage = viewImage;
+        this.editComment = editComment;
 
         this.finished = false;
-        this.editComment = false;
-        this.commentSelected = null;
-        this.viewImage = false;
-        this.viewImageSelected = null;
         this.comments = [];
         this.images = [];
         this.score = 0;
+
         this.section = document.createElement('section');
         this.section.classList.add("sub-section");
     }
@@ -33,14 +30,6 @@ class SubSection {
         this.render();
     }
 
-    handleClickAddImageButton = (e) => {
-        this.camara.openModal((image) => {
-            const id = this.generateID();
-            this.images.push({ id: id, img: image });
-            this.render();
-        });
-    }
-
     handleClickAddCommentButton = (e) => {
         const newId = this.generateID();
         this.comments.unshift({ id: newId, comment: "Empty comment" });
@@ -60,7 +49,7 @@ class SubSection {
         const id = target.id;
         const comment = this.comments.filter((comment) => comment.id === id)[0];
 
-        this.editCommentTest.openModal(comment, (newComment) => {
+        this.editComment.openModal(comment, (newComment) => {
             this.comments = this.comments.map((comment) => {
                 if (comment.id !== newComment.id) return comment;
 
@@ -71,8 +60,16 @@ class SubSection {
         });
     }
 
+    handleClickAddImageButton = (e) => {
+        this.camara.openModal((image) => {
+            const id = this.generateID();
+            this.images.push({ id: id, img: image });
+            this.render();
+        });
+    }
+
     handleClickImage = (e) => {
-        this.viewImageTest.openModal(e.target);
+        this.viewImage.openModal(e.target);
     }
 
     handleClickDeleteImageButton = (e) => {
@@ -82,13 +79,34 @@ class SubSection {
         this.render();
     }
 
+    handleScoreInputKeydown = (e) => {
+        const allow = ['1','2','3','4','5','6','7','8','9','0','Backspace'];
+
+        if (!allow.includes(e.key) || (e.target.value.length > 1 && e.key !== 'Backspace')) {
+            e.preventDefault();
+        }
+
+        e.target.value = '';
+        // if (e.target.value.length)
+    }
+
+    handleScoreInputKeyup = (e) => {
+        if (parseInt(e.target.value) > 5){
+            e.target.value = 5;
+        }
+        else if (parseInt(e.target.value) < 0){
+            e.target.value = 0;
+        }
+
+        this.score = parseInt(e.target.value);
+    }
+
     addEvents = () => {
+        // Finish event
         const finishButton = this.section.querySelector('.sub-section__finish-button');
         finishButton.addEventListener('click', this.handleClickFinishButton);
 
-        const addImageButton = this.section.querySelector('.sub-section__add-image-button');
-        addImageButton.addEventListener('click', this.handleClickAddImageButton);
-
+        // Comment events
         const addCommentButton = this.section.querySelector('.sub-section__add-comment-button');
         addCommentButton.addEventListener('click', this.handleClickAddCommentButton);
 
@@ -102,6 +120,10 @@ class SubSection {
             button.addEventListener('click', this.handleClickEditCommentButton);
         });
 
+        // Image events
+        const addImageButton = this.section.querySelector('.sub-section__add-image-button');
+        addImageButton.addEventListener('click', this.handleClickAddImageButton);
+
         const images = this.section.querySelectorAll('.sub-section__images__image__img');
         images.forEach((img) => {
             img.addEventListener('click', this.handleClickImage);
@@ -111,6 +133,11 @@ class SubSection {
         deleteImageButtons.forEach((btn) => {
             btn.addEventListener('click', this.handleClickDeleteImageButton);
         });
+
+        // Score event
+        const scoreInputKeydown = this.section.querySelector('.sub-section__score');
+        scoreInputKeydown.addEventListener('keydown', this.handleScoreInputKeydown);
+        scoreInputKeydown.addEventListener('keyup', this.handleScoreInputKeyup);
     }
 
     render = () => {
@@ -145,7 +172,7 @@ class SubSection {
                 </p>
             </div>
             <div>
-                <input type="number" min="0" max="5" value="0">
+                <input type="number"  class="sub-section__score" min="0" max="5" value="0">
             </div>
         </div>
         <!-- Buttons -->
