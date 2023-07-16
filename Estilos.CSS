@@ -78,26 +78,3 @@ h1{
     color: white;
     background-color: #3388ff;
 }
-.areas{
-    display: inline-block;
-    position: relative;
-}
-.areascont{
-    display:none;
-    position: absolute;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(red, green, blue, alpha);
-}
-.areas:hover .areascont{
-    display: block;
-}
-.areascont option{
-    display: block;
-    color: #000000;
-    padding: 5px;
-    text-decoration: none;
-}
-.areascont option:hover{
-    color: #FFFFFF;
-    background-color: #00A4BD;
-}

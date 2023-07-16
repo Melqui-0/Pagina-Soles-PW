@@ -14,12 +14,16 @@
     <header>
         
         <button type="reset">Cancelar Auditoria</button>
-        <input type="date" name="fecha" id="fecha">
-        <input type="week" name="week" id="week">
-        <input type="text" name="text" id="text">
-        <div class="areas"> 
-            <label for="areascont">Chose a area</label>
+        <label for="turnos">Turno: </label>
+        <label for="1">1</label>
+        <input type="radio" name="turno" value="1" id="turno"> 
+        <label for="2">2</label>
+        <input type="radio" name="turno" value="2" id="turno">
+        <input type="datetime-local" name="tiempo" id="tiempo">
+        <input type="week" name="week" id="week"> 
+        <label for="areascont">Área:</label>
             <select class="areascont" id="areascont">
+                <option value=" "> </option>
                 <option value="MES TEST">MES TEST</option>
                 <option value="FINAL BUILD">FINAL BUILD</option>
                 <option value="ESS TEST">ESS TEST</option>
@@ -35,7 +39,8 @@
                 <option value="Z-MAINFRAME">Z-MAINFRAME</option>
                 <option value="TEST OPERATION">TEST OPERATION</option>
             </select>
-        </div>
+        <label for="super">Supervisor:  </label>
+        <a></a>
     </header>
     <div class="camara">
         <canvas id="canvas" width="100" height="80"></canvas>
@@ -48,5 +53,6 @@
         </div>
     </dialog>
     <script src="codigos.js"></script>
+    <button id="submit">Enviar auditoria</button>
 </body>
 </html>
