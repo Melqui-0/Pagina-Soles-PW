@@ -4,6 +4,7 @@ class SubSection {
         this.editComment = false;
         this.commentSelected = null;
         this.viewImage = false;
+        this.viewImageSelected = null;
         this.comments = [];
         this.images = [];
         this.score = 0;
@@ -30,12 +31,12 @@ class SubSection {
 
     handleClickAddCommentButton = (e) => {
         const newId = this.generateID();
-        this.comments.unshift({ id: newId, comment: "Empty comment"});
+        this.comments.unshift({ id: newId, comment: "Empty comment" });
         this.render();
     }
 
     handleClickDeleteCommentButton = (e) => {
-        const target = e.target.tagName === "I" ? e.target.parentElement.parentElement : e.target.parentElement 
+        const target = e.target.tagName === "I" ? e.target.parentElement.parentElement : e.target.parentElement
         const id = target.id;
         this.comments = this.comments.filter((comment) => comment.id !== id);
         this.editComment = false;
@@ -72,6 +73,18 @@ class SubSection {
         this.render();
     }
 
+    handleClickImage = (e) => {
+        this.viewImageSelected = e.target;
+        this.viewImage = true;
+        this.render();
+    }
+
+    handleClickCloseModalViewButton = (e) => {
+        const modalView = this.section.querySelector('.modal-view');
+        this.viewImage = false;
+        modalView.close();
+    }
+
     addEvents = () => {
         const finishButton = this.section.querySelector('.sub-section__finish-button');
         finishButton.addEventListener('click', this.handleClickFinishButton);
@@ -95,6 +108,13 @@ class SubSection {
         const modalEditForm = this.section.querySelector('.modal-edit__form');
         modalEditForm.addEventListener('submit', this.handleClickModalEditForm);
 
+        const images = this.section.querySelectorAll('.sub-section__images__image');
+        images.forEach((img) => {
+            img.addEventListener('click', this.handleClickImage);
+        });
+
+        const modalViewCloseButton = this.section.querySelector('.modal-view__close-button');
+        modalViewCloseButton.addEventListener('click', this.handleClickCloseModalViewButton);
 
     }
 
@@ -171,24 +191,24 @@ class SubSection {
             <!-- title -->
             <div><i class='bx bxs-image-alt'></i><span>Images</span></div>
             <!-- Images -->
-            <div>
+            <div class="sub-section__images">
                 <!-- Image -->
-                <div>
+                <div class="sub-section__images__image">
                     <img src="./Img/ibm.jpg" alt="photo">
                 </div>
             </div>
         </div>
 
         <!-- View image modal -->
-        <dialog ${this.viewImage ? "open='true'" : ""}>
+        <dialog ${this.viewImage ? "open='true'" : ""} class="modal-view">
             <section>
                 <header>
-                    <button>
+                    <button class="modal-view__close-button">
                         <i class='bx bxs-x-circle'></i>
                     </button>
                 </header>
                 <div>
-                    <img src="Img/ibm.jpg" alt="">
+                    <img src=${this.viewImageSelected ? this.viewImageSelected.src : ""} alt="" class="modal-view__image">
                 </div>
             </section>
         </dialog>
