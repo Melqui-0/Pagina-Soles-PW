@@ -69,8 +69,8 @@ class ModalCamara {
         this.section.innerHTML = `
         <dialog class="modal-webcam" ${this.open ? "open=''" : ""}>
             <section>
-                <canvas class="modal-webcam__canvas" width="500" height="500"></canvas>
-                <video class="modal-webcam__video" width="500" height="500" autoplay></video>
+                <canvas class="modal-webcam__canvas" width="600" height="500"></canvas>
+                <video class="modal-webcam__video" width="600" height="500" autoplay></video>
                 <button class="modal-webcam__take-photo">Take Photo</button>
             </section>
         </dialog>

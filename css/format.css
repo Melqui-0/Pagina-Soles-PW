@@ -4,3 +4,33 @@
     box-sizing: border-box;
     font-family: 'IBM Plex Sans', sans-serif;
 }
+
+body{
+    background-color: var(--color-light-gray);
+}
+
+.btn-none {
+    cursor: pointer;
+    padding: .5rem 1rem;
+    border: none;
+}
+
+.btn-secundary {
+    background-color: var(--color-light-gray);
+    color: var(--color-dark);
+}
+
+.btn-secundary:hover {
+    background-color: var(--color-gray);
+    color: var(--color-light-gray);
+}
+
+.btn-primary {
+    background-color: var(--color-blue);
+    color: var(--color-white);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-light-blue);
+    color: var(--color-gray);
+}

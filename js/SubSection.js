@@ -5,6 +5,7 @@ class SubSection {
         this.editComment = editComment;
 
         this.finished = false;
+        this.showMore = false;
         this.comments = [];
         this.images = [];
         this.score = 0;
@@ -25,12 +26,22 @@ class SubSection {
         return random + date;
     }
 
+    // Finish Event
     handleClickFinishButton = (e) => {
         this.finished = !this.finished;
         this.render();
     }
 
+    // Show More Event
+    handleClickShowMoreButton = (e) => {
+        this.showMore = !this.showMore;
+        this.render();
+    }
+    
+    // Comments Events
     handleClickAddCommentButton = (e) => {
+        if (!this.showMore) this.showMore = true;
+
         const newId = this.generateID();
         this.comments.unshift({ id: newId, comment: "Empty comment" });
         this.render();
@@ -40,7 +51,7 @@ class SubSection {
         const target = e.target.tagName === "I" ? e.target.parentElement.parentElement : e.target.parentElement
         const id = target.id;
         this.comments = this.comments.filter((comment) => comment.id !== id);
-        this.editComment = false;
+        // this.editComment = false;
         this.render();
     }
 
@@ -60,7 +71,10 @@ class SubSection {
         });
     }
 
+    // Image Events
     handleClickAddImageButton = (e) => {
+        if (!this.showMore) this.showMore = true;
+
         this.camara.openModal((image) => {
             const id = this.generateID();
             this.images.push({ id: id, img: image });
@@ -79,22 +93,25 @@ class SubSection {
         this.render();
     }
 
+    // Input Score Events 
     handleScoreInputKeydown = (e) => {
-        const allow = ['1','2','3','4','5','6','7','8','9','0','Backspace'];
+        const allow = ['1', '2', '3', '4', '5', '0', 'Backspace'];
 
         if (!allow.includes(e.key) || (e.target.value.length > 1 && e.key !== 'Backspace')) {
             e.preventDefault();
         }
 
-        e.target.value = '';
-        // if (e.target.value.length)
+        if (allow.includes(e.key)) {
+            e.target.value = '';
+        }
+
     }
 
     handleScoreInputKeyup = (e) => {
-        if (parseInt(e.target.value) > 5){
+        if (parseInt(e.target.value) > 5) {
             e.target.value = 5;
         }
-        else if (parseInt(e.target.value) < 0){
+        else if (parseInt(e.target.value) < 0) {
             e.target.value = 0;
         }
 
@@ -105,6 +122,10 @@ class SubSection {
         // Finish event
         const finishButton = this.section.querySelector('.sub-section__finish-button');
         finishButton.addEventListener('click', this.handleClickFinishButton);
+
+        // Show more
+        const showMoreButton = this.section.querySelector('.sub-section__show-more');
+        showMoreButton.addEventListener('click', this.handleClickShowMoreButton);
 
         // Comment events
         const addCommentButton = this.section.querySelector('.sub-section__add-comment-button');
@@ -144,89 +165,96 @@ class SubSection {
         this.section.innerHTML = `
         <!-- Header -->
         <header>
+        <div>
             <div>
-                <div>
-                    ${this.finished ?
+                ${this.finished ?
                 `<i class='bx bxs-check-circle'></i>`
                 :
                 `<i class='bx bx-loader-circle'></i>`
-            }
-                </div>
-                <div>
-                    <h5>Name of section</h5>
-                </div>
+                }
             </div>
             <div>
-                <button class="sub-section__finish-button">
-                    ${this.finished ? "Finished section" : "Finish section"}
-                </button>
+                <h5>Name of section</h5>
             </div>
-        </header>
-        <!-- Description and points -->
+        </div>
         <div>
+            <button class="sub-section__finish-button btn-none btn-primary">
+                ${this.finished ? "Finished section" : "Finish section"}
+            </button>
+        </div>
+    </header>
+    <!-- Description and points -->
+    <div class="sub-section__content">
+        <div class="sub-section__main">
             <div>
-                <span>Description</span>
+                <span>Description:</span>
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam animi sint repellendus magni rerum
                     nam?
                 </p>
             </div>
-            <div>
-                <input type="number"  class="sub-section__score" min="0" max="5" value=${this.score}>
-            </div>
+            <input type="text" class="sub-section__score" min="0" max="5" value=${this.score}>
         </div>
         <!-- Buttons -->
         <div>
-            <button class="sub-section__add-comment-button">Add Comment</button>
-            <button class="sub-section__add-image-button">Add Image</button>
+            <button class="sub-section__add-comment-button btn-none btn-secundary">Add Comment</button>
+            <button class="sub-section__add-image-button btn-none btn-secundary">Add Image</button>
+            <button class="sub-section__show-more btn-none btn-secundary">${this.showMore ? "Show Less" : "Show More"}</button>
         </div>
-        <!-- Comments section -->
-        <div>
-            <!-- title -->
-            <div><i class='bx bxs-comment-dots'></i><span>Comments</span></div>
-            <!-- Comments -->
-            <ul class="sub-section__comments">
-                <!-- Comment -->
-                ${this.comments.map((comment) => {
-                return `
-                        <li>
-                            <div class="comment" id=${comment.id}>
-                                <div>
-                                    <button class="edit-comment-button">
-                                        <i class='bx bx-edit'></i>
-                                    </button>
-                                    <span>${comment.comment}</span>
-                                </div>
-                                <button class="delete-comment-button">
-                                    <i class='bx bxs-x-circle'></i>
+        <div class="sub-section__extra ${this.showMore ? "" : "sub-section__extra--hide"}">
+            <!-- Comments section -->
+            <div>
+                <!-- title -->
+                <div class="sub-titles">
+                    <i class='bx bxs-comment-dots'></i><span>Comments</span>
+                </div>
+                <!-- Comments -->
+                <ul class="sub-section__comments">
+                    <!-- Comment -->
+                    ${this.comments.map((comment) => {
+                    return `
+                    <li>
+                        <div class="comment" id=${comment.id}>
+                            <div>
+                                <button class="edit-comment-button btn-none">
+                                    <i class='bx bx-edit'></i>
                                 </button>
+                                <span>${comment.comment}</span>
                             </div>
-                        </li>
-                        `
-            }).join('')
-            }
-            </ul>
-        </div>
-
-        <!-- Images section -->
-        <div>
-            <!-- title -->
-            <div><i class='bx bxs-image-alt'></i><span>Images</span></div>
-            <!-- Images -->
-            <div class="sub-section__images">
-                ${this.images.map((img) => {
-                return `
-                        <div class="sub-section__images__image" id=${img.id}>
-                            <button class="sub-section__images__delete-image-button">
+                            <button class="delete-comment-button btn-none">
                                 <i class='bx bxs-x-circle'></i>
                             </button>
-                            <img class="sub-section__images__image__img" src=${img.img} alt="photo">
-                        </div>  
-                        `
-            }).join('')
-            }
+                        </div>
+                    </li>
+                    `
+                    }).join('')
+                    }
+                </ul>
+            </div>
+
+            <!-- Images section -->
+            <div>
+                <!-- title -->
+                <div class="sub-titles">
+                    <i class='bx bxs-image-alt'></i><span>Images</span>
+                </div>
+                <!-- Images -->
+                <div class="sub-section__images">
+                    ${this.images.map((img) => {
+                    return `
+                    <div class="sub-section__images__image" id=${img.id}>
+                        <button class="sub-section__images__delete-image-button btn-none">
+                            <i class='bx bxs-x-circle'></i>
+                        </button>
+                        <img class="sub-section__images__image__img" src=${img.img} alt="photo">
+                    </div>
+                    `
+                    }).join('')
+                    }
+                </div>
             </div>
         </div>
+    </div>
         `
         this.addEvents();
     }
