@@ -1,25 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+    <title>5's</title>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="css/format.css">
+    <link rel="stylesheet" href="css/colors.css">
+
     <link rel="stylesheet" href="Estilos.CSS">
+
+    <link rel="stylesheet" href="css/SubSection.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,200&display=swap" rel="stylesheet">
-    <title>5's</title>
+
+
 </head>
+
 <body>
     <h1>Auditoria Soles Power Systems</h1>
     <header>
-        
+
         <button type="reset">Cancelar Auditoria</button>
-        <input type="date" name="fecha" id="fecha" title="fech">
+        <label for="turno">Turno: </label>
+        <label for="1">1</label>
+        <input type="radio" name="turno" value="1" id="turno1" title="radio1">
+        <label for="2">2</label>
+        <input type="radio" name="turno" value="2" id="turno2" title="radio2">
+        <input type="datetime-local" name="tiempo" id="tiempo" title="tiempo">
         <input type="week" name="week" id="week" title="week">
-        <input type="text" name="text" id="text" title="text">
-        <div class="areas"> 
-            <label for="areascont">Choose a area</label>
+        <label for="areascont">Área:</label>
+        <div class="areas">
             <select class="areascont" id="areascont">
+                <option value=" "> </option>
                 <option value="MES TEST">MES TEST</option>
                 <option value="FINAL BUILD">FINAL BUILD</option>
                 <option value="ESS TEST">ESS TEST</option>
@@ -35,36 +54,38 @@
                 <option value="Z-MAINFRAME">Z-MAINFRAME</option>
                 <option value="TEST OPERATION">TEST OPERATION</option>
             </select>
-        </div>
-        <label for="prueba">chosse</label>
-        <select name="prueba" id="prueba">
-            <option value="Selecciona una área.....">Selecciona una área....</option>
-                <option value="MES TEST">MES TEST</option>
-                <option value="FINAL BUILD">FINAL BUILD</option>
-                <option value="ESS TEST">ESS TEST</option>
-                <option value="VPD">VPD</option>
-                <option value="NVEC">NVEC</option>
-                <option value="CONSOLIDACIÓN-C&C-PACK">CONSOLIDACIÓN-C&C-PACK</option>
-                <option value="CRIB">CRIB</option>
-                <option value="PPP & CORAL">PPP & CORAL</option>
-                <option value="SUBBASEMBLY">SUBBASEMBLY</option>
-                <option value="RACK MERGE">RACK MERGE</option>
-                <option value="TEAR DOWN">TEAR DOWN</option>
-                <option value="FFBM'S-SG-MES">FFBM'S-SG-MES</option>
-                <option value="Z-MAINFRAME">Z-MAINFRAME</option>
-                <option value="TEST OPERATION">TEST OPERATION</option>
-        </select>
+            <label for="super">Supervisor: </label>
+            <a></a>
+            <p></p>
     </header>
-    <div class="camara">
-        <canvas id="canvas" width="100" height="80"></canvas>
-        <button id="open-modal" class="btn" type="button">Abrir cámara</button>
-    </div>
-    <dialog id="modal-webcam">
-        <div class="container">
-            <video id="video" width="500" height="500" autoplay></video>
-            <button id="capturebutton" class="btn" type="button">Tomar foto</button>
-        </div>
-    </dialog>
+
+    <button id="submit">Enviar auditoria</button>
+
+    <main class="content">
+        <article id="article-seleccionar">
+
+        </article>
+        <article id="article-ordenar">
+
+        </article>
+        <article id="article-limpiar">
+
+        </article>
+        <article id="article-estandarizar">
+
+        </article>
+        <article id="article-sostener">
+
+        </article>
+    </main>
+
     <script src="codigos.js"></script>
+    <script src="js/ModalCamara.js"></script>
+    <script src="js/ModalEditComment.js"></script>
+    <script src="js/ModalViewImage.js"></script>
+    <script src="js/SubSection.js"></script>
+    <script type="module" src="js/setup.js"></script>
+
 </body>
+
 </html>

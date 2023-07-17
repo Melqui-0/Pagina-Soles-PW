@@ -1,48 +1,38 @@
-const video = document.getElementById("video");
-const canvas = document.getElementById("canvas");
-const capturebutton = document.getElementById("capturebutton");
-const modal = document.querySelector("#modal-webcam");
-const openmodal = document.querySelector("#open-modal");
-let mediaStream = undefined;
+//Para los supervisores
+let seleccionar = document.querySelector('select');
+let parrafo = document.querySelector('a');
 
-openmodal.addEventListener('click', e=>{
-    modal.show();
-    usarcamara();
-});
 
-//Obtener acceso a la camara y mostrar la vista previa del video.
-const usarcamara = () => {
-    navigator.mediaDevices.getUserMedia({ video: true })
-    .then((stream) => {
-        mediaStream = stream;
-        video.srcObject = stream;
-    })
-    .catch((error) => {
-        console.error("Error al acceder a la cámara: ", error);
-    });
-}
+seleccionar.addEventListener('change', establecersuper);
 
-function apagarcamara () {
-    if (mediaStream) {
-     const tracks = mediaStream.getTracks();
-     
-     tracks.forEach((track) => {
-        track.stop(); //Detener cada track
-     });
+function establecersuper() {
+    let eleccion = seleccionar.value;
 
-     mediaStream = null; // Limpiar referencia al Stream
+    if (eleccion === 'MES TEST') {
+        parrafo.textContent = 'Rafael granados';
+    } else {
+        parrafo.textContent = ' ';
     }
 }
-//Funcion para captutar la foto y mostrar la captura en canvas
-function capturarfoto () {
-    //Dibujar el fotograma actual del video en canvas
-    canvas.getContext("2d").drawImage(video, 0 , 0, canvas.width, canvas.height);
 
-    const fotoURL = canvas.toDataURL(); //Con esta URL la puedes descargar
+//document.getElementById('submit').onclick = function () {
+//    var radios = document.getElementsByName('turno');
+//    var selected = Array.from(radios).find(radio => radio.checked);
+//    alert(selected.value)
+//}
 
-    apagarcamara();
-    modal.close();
+let parra = document.querySelector('p')
+let turnos = $('input[name="turno"]:checked').val();
+
+turnos.addEventListener('change',  establecerturno);
+
+function establecerturno(){
+    // turno = turnos.value;
+    
+    if ($('input[name="el_nombre_de_tu_radio"]').is(':checked')){
+        parra.textContent = '2';
+    } else {
+        parra.textContent = ' ';
+    }
+    
 }
-
-//Agregar el evento click al boton de captura
-capturebutton.addEventListener("click", capturarfoto);
