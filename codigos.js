@@ -21,18 +21,11 @@ function establecersuper() {
 //    alert(selected.value)
 //}
 
-let parra = document.querySelector('p')
-let turnos = $('input[name="turno"]:checked').val();
+let button = $('input[name="turno"]:checked').val();
+let prueba = document.querySelector('p');
 
-turnos.addEventListener('change',  establecerturno);
-
-function establecerturno(){
-    // turno = turnos.value;
-    
-    if ($('input[name="el_nombre_de_tu_radio"]').is(':checked')){
-        parra.textContent = '2';
-    } else {
-        parra.textContent = ' ';
-    }
-    
+if (button === 2 ){
+    prueba .textContent = 'qwerty';
+} else {
+    prueba.textContent = ' ';
 }
