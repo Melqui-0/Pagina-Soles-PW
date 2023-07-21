@@ -76,11 +76,24 @@ function establecerturno() {
             } else if (eleccion === 'PPP & CORAL') {
                 parrafo.textContent = 'Jorge Avila';
             } else if (eleccion === 'VPD') {
-                parrafo.textContent = 'Javier Damian';
+                parrafo.textContent = 'Javier Ochoa';
             }
         }
     } else {
 
+    }
+}
+
+let promedio = document.querySelector('input[name="promedio"]');
+let color = document.querySelector('div[name="promediofina"]')
+
+promedio.addEventListener('change', promediofinal);
+
+function promediofinal() {
+    let promofinal = promedio.value;
+
+    if (promofinal >= ) {
+        color.background.red ;
     }
 }
 

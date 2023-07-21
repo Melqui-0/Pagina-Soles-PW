@@ -34,3 +34,12 @@ body{
     background-color: var(--color-light-blue);
     color: var(--color-gray);
 }
+.btn-cancel {
+    background-color: var(--color-red);
+    color: var(--color-white);
+    cursor: pointer;
+}
+.btn-cancel:hover {
+    background-color: var(--color-light-red);
+    color: var(--color-white)
+}
