@@ -82,7 +82,7 @@ h1{
 header{
     padding: .5rem 1rem;
     display: flex;
-    justify-content: space-around;
+    justify-content:space-between;
     align-items: center;
     background-color: var(--color-light-gray);
     color: var(--color-dark);
@@ -104,11 +104,13 @@ header #promedio{
 }
 .encabezado h1{
     text-align: center;
+    align-content: center;
     margin-left: 20rem;
 }
 .encabezado{
     padding: 0px 2rem;
     position: relative;
+    display: inline-block;
     display: flex;
     height: 100%;
     align-items: center;

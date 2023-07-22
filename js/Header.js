@@ -85,18 +85,29 @@ function establecerturno() {
 }
 
 //Para la calificaión final
-let promedio = document.querySelector('input[name="promedio"]');
-let color = document.querySelector('div[name="promediofina"]')
-
-promedio.addEventListener('change', promediofinal);
-
-function promediofinal() {
-    let promofinal = promedio.value;
-
-    if (promofinal >= 2) {
-        color.background.red ;
+function cambio(elemento){
+    if ($(elemento).val() >= "95"){
+        $(elemento).css("background-color", "green");
+    } else if ($(elemento).val() >= "90" && $(elemento).val() <= "94"){
+        $(elemento).css("background-color", "yellow");
+    } else if ($(elemento).val() <= "89"){
+        $(elemento).css("background-color", "red");
+    } else {
+        $(elemento).css("background-color", "");
     }
 }
+/*$(function(){
+    $('#Datos-Area: input').change(function(){
+        var $input = $(this);
+        if ($input.val() === ''){
+            $input.addClass('Aprobado');
+        } else if ($input.val() >= '90' && $input.val() <= '94'){
+            $input.addClass('Advertencia');
+        } else if ($input.val() <= '89'){
+            $input.addClass('Reprobado');
+        } 
+    });
+});*/
 
 //document.getElementById('submit').onclick = function () {
 //    var radios = document.getElementsByName('turno');
