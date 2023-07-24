@@ -88,10 +88,13 @@ function establecerturno() {
 function cambio(elemento){
     if ($(elemento).val() >= "95"){
         $(elemento).css("background-color", "green");
+        $(elemento).css("color", "white");
     } else if ($(elemento).val() >= "90" && $(elemento).val() <= "94"){
-        $(elemento).css("background-color", "yellow");
+        $(elemento).css("background-color", "orange");
+        $(elemento).css("color", "white");
     } else if ($(elemento).val() <= "89"){
         $(elemento).css("background-color", "red");
+        $(elemento).css("color", "white");
     } else {
         $(elemento).css("background-color", "");
     }
