@@ -2,6 +2,7 @@ body{
     margin: 0;
     padding: 0; 
     line-height: 1.5em;
+    padding-top: 5.5rem;
 }
 h1{
     font-family: 'Poppins', sans-serif;
@@ -82,13 +83,14 @@ h1{
 }
 header{
     padding: .5rem 1rem;
-    display: flex;
-    justify-content:space-between;
+    /*display: flex;
+    justify-content:space-between;*/
     align-items: center;
     background-color: var(--color-light-gray);
     color: var(--color-dark);
     border: 2px solid transparent;
     outline: none;
+    padding: 0px;
     
 }
 .cancel-audit{
@@ -126,5 +128,6 @@ header #promedio{
     width: 100%; /* hacemos que la cabecera ocupe el ancho completo de la página */
 	left: 0; /* Posicionamos la cabecera al lado izquierdo */
 	top: 0; /* Posicionamos la cabecera pegada arriba */
-	position: fixed;
-}
+	position: fixed; /* Hacemos que la cabecera tenga una posición fija */
+} 
+
