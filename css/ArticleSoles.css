@@ -1,0 +1,43 @@
+.article-soles {
+    position: relative;
+    margin: auto;
+    padding: 1rem;
+}
+
+.article-soles__body {
+    display: flex;
+    gap: .5rem;
+}
+
+.article-soles__content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.article-soles__aside {
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    gap: 1rem;
+}
+
+.article-soles__score {
+    border: none;
+    width: 200px;
+    height: 100px;
+    /* aspect-ratio: 1/1; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-dark);
+    color: var(--color-white);
+}
+
+.article-soles__score--number {
+    font-size: 3rem;
+}

@@ -1,5 +1,6 @@
 class SubSection {
-    constructor(camara, viewImage, editComment) {
+    constructor(description, camara, viewImage, editComment) {
+        this.description = description;
         this.camara = camara;
         this.viewImage = viewImage;
         this.editComment = editComment;
@@ -37,7 +38,7 @@ class SubSection {
         this.showMore = !this.showMore;
         this.render();
     }
-    
+
     // Comments Events
     handleClickAddCommentButton = (e) => {
         if (!this.showMore) this.showMore = true;
@@ -171,7 +172,7 @@ class SubSection {
                 `<i class='bx bxs-check-circle'></i>`
                 :
                 `<i class='bx bx-loader-circle'></i>`
-                }
+            }
             </div>
             <div>
                 <h5>Name of section</h5>
@@ -188,71 +189,71 @@ class SubSection {
         <div class="sub-section__main">
             <div>
                 <span>Description:</span>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam animi sint repellendus magni rerum
-                    nam?
-                </p>
+                <p>${this.description}</p>
             </div>
-            <input type="text" class="sub-section__score" min="0" max="5" value=${this.score}>
-        </div>
-        <!-- Buttons -->
-        <div>
-            <button class="sub-section__add-comment-button btn-none btn-secundary">Add Comment</button>
-            <button class="sub-section__add-image-button btn-none btn-secundary">Add Image</button>
-            <button class="sub-section__show-more btn-none btn-secundary">${this.showMore ? "Show Less" : "Show More"}</button>
-        </div>
-        <div class="sub-section__extra ${this.showMore ? "" : "sub-section__extra--hide"}">
-            <!-- Comments section -->
+            <!-- Buttons -->
             <div>
-                <!-- title -->
-                <div class="sub-titles">
-                    <i class='bx bxs-comment-dots'></i><span>Comments</span>
-                </div>
-                <!-- Comments -->
-                <ul class="sub-section__comments">
-                    <!-- Comment -->
-                    ${this.comments.map((comment) => {
-                    return `
-                    <li>
-                        <div class="comment" id=${comment.id}>
-                            <div>
-                                <button class="edit-comment-button btn-none">
-                                    <i class='bx bx-edit'></i>
-                                </button>
-                                <span>${comment.comment}</span>
-                            </div>
-                            <button class="delete-comment-button btn-none">
-                                <i class='bx bxs-x-circle'></i>
-                            </button>
-                        </div>
-                    </li>
-                    `
-                    }).join('')
-                    }
-                </ul>
+                <button class="sub-section__add-comment-button btn-none btn-secundary">Add Comment</button>
+                <button class="sub-section__add-image-button btn-none btn-secundary">Add Image</button>
+                <button class="sub-section__show-more btn-none btn-secundary">${this.showMore ? "Show Less" : "Show More"}</button>
             </div>
-
-            <!-- Images section -->
-            <div>
-                <!-- title -->
-                <div class="sub-titles">
-                    <i class='bx bxs-image-alt'></i><span>Images</span>
-                </div>
-                <!-- Images -->
-                <div class="sub-section__images">
-                    ${this.images.map((img) => {
-                    return `
-                    <div class="sub-section__images__image" id=${img.id}>
-                        <button class="sub-section__images__delete-image-button btn-none">
-                            <i class='bx bxs-x-circle'></i>
-                        </button>
-                        <img class="sub-section__images__image__img" src=${img.img} alt="photo">
+        
+            <div class="sub-section__extra ${this.showMore ? "" : "sub-section__extra--hide"}">
+                <!-- Comments section -->
+                <div>
+                    <!-- title -->
+                    <div class="sub-titles">
+                        <i class='bx bxs-comment-dots'></i><span>Comments</span>
                     </div>
-                    `
-                    }).join('')
-                    }
+                    <!-- Comments -->
+                    <ul class="sub-section__comments">
+                        <!-- Comment -->
+                        ${this.comments.map((comment) => {
+                            return `
+                                <li>
+                                    <div class="comment" id=${comment.id}>
+                                        <div>
+                                            <button class="edit-comment-button btn-none">
+                                                <i class='bx bx-edit'></i>
+                                            </button>
+                                            <span>${comment.comment}</span>
+                                        </div>
+                                        <button class="delete-comment-button btn-none">
+                                            <i class='bx bxs-x-circle'></i>
+                                        </button>
+                                    </div>
+                                </li>
+                                `
+                            }).join('')
+                        }
+                    </ul>
+                </div>
+
+                <!-- Images section -->
+                <div>
+                    <!-- title -->
+                    <div class="sub-titles">
+                        <i class='bx bxs-image-alt'></i><span>Images</span>
+                    </div>
+                    <!-- Images -->
+                    <div class="sub-section__images">
+                        ${this.images.map((img) => {
+                            return `
+                                <div class="sub-section__images__image" id=${img.id}>
+                                    <button class="sub-section__images__delete-image-button btn-none">
+                                        <i class='bx bxs-x-circle'></i>
+                                    </button>
+                                    <img class="sub-section__images__image__img" src=${img.img} alt="photo">
+                                </div>
+                                `
+                            }).join('')
+                        }
+                    </div>
                 </div>
             </div>
+        </div>
+        <div class="sub-section__aside">
+            <input type="text" class="sub-section__score" min="0" max="5" value=${this.score}>
         </div>
     </div>
         `

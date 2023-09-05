@@ -128,6 +128,6 @@ header #promedio{
     width: 100%; /* hacemos que la cabecera ocupe el ancho completo de la página */
 	left: 0; /* Posicionamos la cabecera al lado izquierdo */
 	top: 0; /* Posicionamos la cabecera pegada arriba */
-	position: fixed; /* Hacemos que la cabecera tenga una posición fija */
-} 
-
+	position: sticky; /* Se le cambio la posicion por un stiky para mejorar un poco ;v*/
+    z-index: 100; /* Se le agrago un z-index para que este por delante del contenido de la pagina*/
+}
