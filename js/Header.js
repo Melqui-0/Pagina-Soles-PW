@@ -1,6 +1,6 @@
 //Para los supervisores
 let seleccionar = document.querySelector('select[name="areas"]');
-let parrafo = document.querySelector('a');
+let parrafo = document.querySelector('a[name="supervisores"]');
 let turnos = document.querySelector('select[name="turno"]');
 
 turnos.addEventListener('change', establecerturno);

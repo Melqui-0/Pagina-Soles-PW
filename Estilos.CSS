@@ -2,12 +2,12 @@ body{
     margin: 0;
     padding: 0; 
     line-height: 1.5em;
-    padding-top: 5.5rem;
+    /*padding-top: 5.5rem;*/
 }
 h1{
     font-family: 'Poppins', sans-serif;
     text-align: center;
-    background-color: var(--color-white);
+    /*background-color: var(--color-white);*/
 }
 .container{
     width: fit-content;
@@ -95,7 +95,11 @@ header{
 }
 .cancel-audit{
     padding: 1rem 1rem;
-    border: none;
+    border: dark;
+}
+.send-audit{
+    padding: 1rem 1rem;
+    border: dark;
 }
 header #promedio{
     border: none;
@@ -103,7 +107,7 @@ header #promedio{
     height: auto;
     aspect-ratio: 1/1;
     text-align: center;
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     background-color: var(--color-light-gray);
 }
 .encabezado h1{
@@ -130,4 +134,16 @@ header #promedio{
 	top: 0; /* Posicionamos la cabecera pegada arriba */
 	position: sticky; /* Se le cambio la posicion por un stiky para mejorar un poco ;v*/
     z-index: 100; /* Se le agrago un z-index para que este por delante del contenido de la pagina*/
+}
+#Datos-Area{
+    margin: 0%;
+    padding: 0%;
+    display:flex;
+    align-content: center;
+    text-align: center;    
+    justify-content: space-around;
+    align-items: center;
+}
+#tiempo, #week, #areascont, #turno, #supervisores, #promedio{
+    text-align: center;
 }
